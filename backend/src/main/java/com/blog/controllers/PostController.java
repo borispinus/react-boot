@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpServletResponse;
 import java.net.URISyntaxException;
+import java.util.Date;
 
 
 /**
@@ -21,29 +23,37 @@ public class PostController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() throws URISyntaxException{
-        return "home";
+        return "index";
     }
 
 
-    @RequestMapping(value = "/posts", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/posts", method = RequestMethod.GET)
     @ResponseBody
     public Iterable<Post> getAllPosts() throws URISyntaxException{
         return postRepository.findAll();
     }
 
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/post/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Post getPost(@PathVariable(value="id") Long id){
         return postRepository.findOne(id);
 
     }
 
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.DELETE)
-    public String deletePost( @PathVariable(value="id") Long id){
-        postRepository.delete(id);
-        return "redirect:/posts";
+
+
+    @RequestMapping(value = "/api/post", method = RequestMethod.POST)
+    @ResponseBody
+    public Post createPost(@RequestBody Post post){
+        return postRepository.save(post);
 
     }
 
+    @RequestMapping(value = "/api/post/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public String deletePost( @PathVariable(value="id") Long id){
+        postRepository.delete(id);
+        return "redirect:/api/posts";
 
+    }
 }

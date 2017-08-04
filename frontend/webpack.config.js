@@ -12,6 +12,17 @@ module.exports = {
         path: PATHS.build,
         filename: 'app-bundle.js'
     },
+    devServer: {
+        publicPath:"/assets/",
+        contentBase: "../backend/resources/templates",
+        hot: true,
+        proxy: {
+            '/api/*': {
+                target: 'http://localhost:8090',
+                secure: false
+            }
+        }
+    },
     module: {
         loaders: [
             {
