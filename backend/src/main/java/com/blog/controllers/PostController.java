@@ -3,6 +3,11 @@ package com.blog.controllers;
 import com.blog.models.Post;
 import com.blog.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +26,21 @@ public class PostController {
     @Autowired
     PostRepository postRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/admin", "/login"}, method = RequestMethod.GET)
     public String home() throws URISyntaxException{
         return "index";
     }
 
+    @RequestMapping(value = "/is_admin", method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean isAdmin() throws URISyntaxException{
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (auth instanceof AnonymousAuthenticationToken) {
+            return false;
+        }
+        return true;
+    }
 
     @RequestMapping(value = "/api/posts", method = RequestMethod.GET)
     @ResponseBody

@@ -15,12 +15,13 @@ module.exports = {
     devServer: {
         publicPath:"/assets/",
         contentBase: "../backend/resources/templates",
+        historyApiFallback: true,
         hot: true,
-        proxy: {
-            '/api/*': {
-                target: 'http://localhost:8090',
-                secure: false
-            }
+    },
+    resolve: {
+        alias: {
+            'react': path.resolve('./node_modules/react'),
+            'react-dom': path.resolve('./node_modules/react-dom'),
         }
     },
     module: {
@@ -30,17 +31,29 @@ module.exports = {
                 loader: ExtractTextPlugin.extract(
                     "style",
                     "css!postcss!sass"
-                )
+                    )
             },
             {
                 test: /\.jsx?$/,
                 loader: 'babel',
-                exclude: /node_modules/,
                 query: {
                     plugins: ["transform-decorators-legacy", "transform-class-properties"],
                     presets: ['es2015', 'react', "stage-1"]
                 }
-            }
+            },
+            {
+                test: /plugin\.css$/,
+                loaders: [
+                'style', 'css',
+                ]
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract(
+                    "style",
+                    "css!postcss"
+                    )
+            },
         ]
     },
     eslint: {

@@ -21,21 +21,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @EntityScan(basePackages= "com.blog.models")
 @EnableJpaRepositories(basePackages= "com.blog.repositories")
-public class Application implements ApplicationListener<ContextRefreshedEvent> {
-
-    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
-
-    @Value("${spring.profiles.active}")
-    protected String springProfilesActive;
-
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
-        LOG.info("=======================================");
-        LOG.info("App running with active profiles: {}", springProfilesActive);
-        LOG.info("=======================================");
-    }
-
-    public static void main(String[] args) {
+public class Application {
+        public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 }

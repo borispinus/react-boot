@@ -27,7 +27,6 @@ export default class Layout extends React.Component {
   deletePost(id) {
     this.props.dispatch((dispatch) => {
     	api.deletePost(id).then(() => {
-          console.log(id);
     			dispatch(deletePost(id));
     		});
 			});
@@ -40,15 +39,12 @@ export default class Layout extends React.Component {
 		});
   }
 
-  componentWillMount(){
-    this.fetchPosts();
-  }
 	render() {
 		return (
-    <div>
-      <PostForm createPost = {this.createPost.bind(this)}></PostForm>
-      <ul>{ this.props.posts.map((post, i) => <li key = {i}><Post post = { post} deletePost= {this.deletePost.bind(this)}/></li>)}</ul>
-    </div>
+      <div>
+      { React.cloneElement(this.props.children, { posts: this.props.posts, deletePost: this.deletePost.bind(this),
+        createPost: this.createPost.bind(this), fetchPosts: this.fetchPosts.bind(this)}) }
+      </div>
     );
 	}
 }

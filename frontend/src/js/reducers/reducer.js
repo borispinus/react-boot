@@ -1,4 +1,6 @@
-import { combineReducers} from "redux"
+import { combineReducers} from "redux";
+import { routerReducer } from 'react-router-redux'
+
 
 const posts = function(state = {posts: []}, action){
 	switch (action.type){
@@ -12,5 +14,6 @@ const posts = function(state = {posts: []}, action){
 };
 
 export default combineReducers({
-  posts
+  posts,
+  routing: routerReducer
 });
