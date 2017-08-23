@@ -1,78 +1,111 @@
-.base {
-  border: 1px solid grey; }
+body {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospaceS; }
+  body ul {
+    list-style-type: none;
+    padding: 0; }
+  body a, body a:visited, body a:hover, body a:active {
+    color: #002663; }
+  body button {
+    background-color: white;
+    text-transform: uppercase;
+    padding: 5px;
+    height: 30px;
+    letter-spacing: 2px;
+    outline: none; }
+  body input {
+    margin: 0 0 10px;
+    padding: 5px;
+    border: 1px solid black; }
+  body img {
+    max-width: 100%;
+    height: auto; }
 
-.red {
-  border: 2px solid red; }
-
-.recipe-ingredients {
-  display: block; }
-
-.ingredientsHeader {
+.terminalHeader .newLine {
   display: inline-block; }
 
-button {
-  padding: 0;
-  border: none;
-  background: none;
-  outline: none;
-  cursor: pointer; }
+.terminalHeader .name {
+  color: #3da004;
+  font-weight: bold; }
 
-.newIngredientBtn {
-  margin-left: 5px; }
+.terminal {
+  padding: 5%;
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-size: 2em;
+  display: inline-block; }
+  @media only screen and (max-width: 640px) {
+    .terminal {
+      font-size: 1em; } }
+  .terminal .lineStart {
+    font-weight: 600;
+    color: #e5e534; }
+  .terminal .posts {
+    margin-top: 50px; }
+    @media only screen and (max-width: 640px) {
+      .terminal .posts {
+        margin-top: 20px; } }
+    .terminal .posts .postContainer {
+      display: flex;
+      max-width: 1000px;
+      justify-content: space-between; }
+      .terminal .posts .postContainer .postTitle {
+        margin-bottom: 10px;
+        font-weight: 600; }
+  .terminal .terminalFooter {
+    margin-top: 50px;
+    margin-bottom: 20px; }
+    @media only screen and (max-width: 640px) {
+      .terminal .terminalFooter {
+        margin-top: 20px; } }
+    .terminal .terminalFooter .cursor {
+      animation: cursor 1s ease-in-out 0s infinite; }
 
-.deleteIngredientBtn {
-  margin-left: 5px; }
+@keyframes cursor {
+  0% {
+    opacity: 1; }
+  33% {
+    opacity: 1; }
+  66% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 
-input {
-  margin: 10px 0 10px;
-  padding: 5px;
-  border: 1px solid black; }
+.post {
+  margin: 20px auto 20px;
+  padding: 10px;
+  max-width: 800px; }
+  .post .postTitle {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 50px; }
+    @media only screen and (max-width: 640px) {
+      .post .postTitle {
+        font-size: 1.5rem; } }
+  .post .postText {
+    word-wrap: break-word;
+    font-size: 1.5rem;
+    line-height: 1.5; }
+    @media only screen and (max-width: 640px) {
+      .post .postText {
+        font-size: 1rem;
+        line-height: 1; } }
 
-.addRecipeBtn, .editBtn, .deleteBtn, .addBtn {
-  background-color: black;
-  text-transform: uppercase;
-  color: white;
-  padding: 5px;
-  height: 30px;
-  letter-spacing: 2px;
-  margin-top: 20px;
-  font-size: 12px; }
-
-.addBtn {
-  display: block;
-  margin: 40px auto 0; }
-
-.editBtn {
-  margin-right: 5px; }
-
-li {
-  margin: 10px; }
-
-.recipeList {
-  display: inline-block;
-  padding: 0; }
-
-.container {
-  display: inline-block;
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 0);
-  padding: 20px;
+.adminContainer {
   text-align: center; }
-
-.btnGroup {
-  margin-bottom: 40px; }
-
-.ingredients {
-  text-align: left; }
-
-.recipe {
-  max-width: 400px;
-  word-break: break-all; }
-
-.recipesHeader {
-  display: inline-block;
-  cursor: pointer; }
+  .adminContainer .adminHeader {
+    margin: 20px 0 20px;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold; }
+  .adminContainer .postFormContainer {
+    text-align: left;
+    max-width: 800px;
+    margin: auto; }
+    .adminContainer .postFormContainer label {
+      display: block;
+      margin-bottom: 10px; }
+    .adminContainer .postFormContainer button {
+      margin-top: 20px; }
 .RichEditor-root {
   background: #fff;
   border: 1px solid #ddd;

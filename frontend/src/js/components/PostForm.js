@@ -19,17 +19,17 @@ export default class PostForm extends React.Component {
 
 	render() {
     return (
-      <div>
+      <div className="postFormContainer">
       <form id = "newPost">
+        <label>Название</label>
         <input name = "title"></input>
-      </form>
-
+        <label>Содержание</label>
       <BasicHtmlEditor
         onChange={ this.onChange }
         debounce={ 500 }
       />
-
-      <button type="button" onClick = {this.createHelper.bind(this)}>Create</button>
+      </form>
+      <button type="button" onClick = {this.createHelper.bind(this)}>Создать</button>
       </div>
       );
   }

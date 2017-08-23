@@ -11,13 +11,16 @@ import java.util.Date;
  */
 
 @Entity
+@Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private String title;
-    @Column(length = 1024)
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String text;
+    @Column(nullable = false)
     private Date date;
 
     public Long getId() {

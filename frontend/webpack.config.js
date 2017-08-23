@@ -6,6 +6,16 @@ const PATHS = {
     build: path.join('..', 'backend', 'resources', 'public')
 };
 
+const query = {
+  bypassOnDebug: true,
+  optipng: {
+    optimizationLevel: 4
+  },
+  gifsicle: {
+    interlaced: false
+  }
+};
+
 module.exports = {
     entry: "./src/js/main.js",
     output: {
@@ -32,6 +42,17 @@ module.exports = {
                     "style",
                     "css!postcss!sass"
                     )
+            },
+            {
+                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                loader: "file-loader"
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: [
+                    'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+                    `image-webpack-loader?${JSON.stringify(query)}`
+                ]
             },
             {
                 test: /\.jsx?$/,

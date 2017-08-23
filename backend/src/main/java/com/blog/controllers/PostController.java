@@ -26,7 +26,7 @@ public class PostController {
     @Autowired
     PostRepository postRepository;
 
-    @RequestMapping(value = {"/", "/admin", "/login"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/admin", "/login", "/post/{id:\\d+}"}, method = RequestMethod.GET)
     public String home() throws URISyntaxException{
         return "index";
     }

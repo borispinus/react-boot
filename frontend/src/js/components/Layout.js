@@ -6,8 +6,6 @@ import api from "../api";
 
 
 import { createPost, deletePost, fetchPosts} from "../actions/actions.js";
-import Post from "./Post"
-import PostForm from "./PostForm"
 
 @connect((store) => {
   return {
@@ -16,6 +14,10 @@ import PostForm from "./PostForm"
 })
 
 export default class Layout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { loaded: false };
+  }
 
 	createPost(title, text, date) {
     this.props.dispatch((dispatch) => {
@@ -31,7 +33,7 @@ export default class Layout extends React.Component {
     		});
 			});
   }
-  fetchPosts() {
+  fetchPosts(reject, resolve) {
     this.props.dispatch((dispatch) => {
     	api.fetchPosts().then(response => {
     		dispatch(fetchPosts(response.data));
@@ -39,12 +41,15 @@ export default class Layout extends React.Component {
 		});
   }
 
+  componentDidMount(){
+    this.fetchPosts();
+  }
 	render() {
 		return (
       <div>
-      { React.cloneElement(this.props.children, { posts: this.props.posts, deletePost: this.deletePost.bind(this),
+      { React.cloneElement(this.props.children, {posts: this.props.posts, deletePost: this.deletePost.bind(this),
         createPost: this.createPost.bind(this), fetchPosts: this.fetchPosts.bind(this)}) }
-      </div>
+    </div>
     );
 	}
 }

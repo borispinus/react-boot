@@ -1,58 +1,27 @@
-.base
-	border: 1px solid grey
-.red
-	border: 2px solid red
-.recipe-ingredients
-	display: block	
-.ingredientsHeader
-	display: inline-block
-button
-	padding: 0
-	border: none
-	background: none
-	outline: none
-	cursor: pointer
-.newIngredientBtn
-	margin-left: 5px
-.deleteIngredientBtn
-	margin-left: 5px
-input
-	margin: 10px 0 10px
-	padding: 5px
-	border: 1px solid black
-.addRecipeBtn, .editBtn, .deleteBtn, .addBtn
-	background-color: black
-	text-transform: uppercase
-	color: white
-	padding: 5px
-	height: 30px
-	letter-spacing: 2px
-	margin-top: 20px
-	font-size: 12px
-.addBtn
-	display: block
-	margin: 40px auto 0
-.editBtn
-	margin-right: 5px
-li
-	margin: 10px
-.recipeList
-	display: inline-block
-	padding: 0
-.container
-	display: inline-block
-	position: fixed
-	left: 50%
-	transform: translate(-50%,0)
-	padding: 20px
-	text-align: center
-.btnGroup
-	margin-bottom: 40px
-.ingredients
-	text-align: left
-.recipe
-	max-width: 400px
-	word-break: break-all
-.recipesHeader
-	display: inline-block
-	cursor: pointer
+body
+	font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospaceS
+	ul
+		list-style-type: none
+		padding: 0
+
+	a, a:visited, a:hover, a:active
+  		color: #002663
+	button
+		background-color: white
+		text-transform: uppercase
+		padding: 5px
+		height: 30px
+		letter-spacing: 2px
+		outline: none
+	input
+		margin: 0 0 10px
+		padding: 5px
+		border: 1px solid black
+	img
+		max-width: 100%
+		height: auto
+
+@import "header.sass"
+@import "index.sass"
+@import "post.sass"
+@import "admin.sass"
