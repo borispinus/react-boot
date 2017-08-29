@@ -14,7 +14,7 @@ export default class Index extends React.Component {
     this.state = { logged: false, loaded: false };
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.checkLogin();
   }
 

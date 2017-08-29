@@ -54,7 +54,8 @@ export default class Header extends React.Component {
 			if (this.state.lines[1].isPresent){
 				lines[1] =  lineStart
 				br[0] = <br/>;
-				results[0] = <span><span className = "name">Boris Pinus</span>, developer. More info on <a href="http://borispinus.github.io/">borispinus.github.io/</a></span>;
+				results[0] = <div className ="terminalInfo"><span><span className = "name">Boris Pinus</span>, developer.</span>
+				<span className="moreInfo">More info on </span><a target="_blank" href="http://borispinus.github.io/">borispinus.github.io/</a></div>;
 				br[1] = <br/>;
 			}
 
@@ -69,7 +70,6 @@ export default class Header extends React.Component {
 					{ this.state.lines[0].currentText }
 					{ br[0] }
 					{ results[0] }
-					{ br[1] }
 					{ lines[1] }
 					{ this.state.lines[1].currentText }
 					{ cursor }

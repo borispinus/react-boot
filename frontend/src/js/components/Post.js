@@ -13,8 +13,8 @@ export default class Post extends React.Component {
         </div>
       }
       return (
-        <div>
-        <Link to={"/"}>На главную</Link>
+        <div className="postHelper">
+        <Link to={"/"} className="backLink">На главную</Link>
         { postDiv }
         </div>
       );

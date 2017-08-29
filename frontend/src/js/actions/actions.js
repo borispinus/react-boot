@@ -11,9 +11,3 @@ export function fetchPosts(posts) {
     posts
   }
 }
-
-export function login() {
-  return {
-    type: 'LOGIN',
-  }
-}

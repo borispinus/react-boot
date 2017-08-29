@@ -57,6 +57,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 loader: 'babel',
+                exclude: path.resolve(__dirname, "node_modules"),
                 query: {
                     plugins: ["transform-decorators-legacy", "transform-class-properties"],
                     presets: ['es2015', 'react', "stage-1"]
